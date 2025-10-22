@@ -1,0 +1,34 @@
+run:
+  timeout: 3m
+  tests: true
+
+linters:
+  enable:
+    - govet
+    - gofmt
+    - goimports
+    - staticcheck
+    - errcheck
+    - ineffassign
+    - unused
+    - gocyclo
+    - gosimple
+    - misspell
+    - unparam
+    - prealloc
+    - whitespace
+  disable:
+    - funlen     # отключим ограничение длины функций
+
+issues:
+  exclude-use-default: false
+  exclude-rules:
+    - path: _test\.go
+      linters:
+        - gocyclo
+        - errcheck
+
+output:
+  formats:
+    - format: colored-line-number
+  print-issued-lines: true
