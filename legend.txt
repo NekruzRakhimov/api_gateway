@@ -1,0 +1,2 @@
+docker build -t api-gateway .
+docker run -d --env-file .env -p 8283:8283 api-gateway
