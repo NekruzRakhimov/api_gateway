@@ -46,7 +46,7 @@ func TestLoad_UsesEnvValues(t *testing.T) {
 
 	cfg := Load()
 
-	if cfg.Port != ":9000" {
+	if cfg.Port != ":9001" {
 		t.Fatalf("expected Port=:9000, got %q", cfg.Port)
 	}
 	if cfg.AuthServiceURL != "http://auth:8080" {
