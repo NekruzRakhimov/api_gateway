@@ -1,6 +1,7 @@
 package router
 
 import (
+	"fmt"
 	// std
 	"net/http"
 	"net/url"
@@ -22,7 +23,11 @@ func Setup(cfg *config.Config) *chi.Mux {
 
 	r.Get("/ping", func(w http.ResponseWriter, _ *http.Request) {
 		w.Header().Set("Content-Type", "application/json")
-		w.Write([]byte(`{"status":"ok"}`))
+		_, err := w.Write([]byte(`{"status":"ok"}`))
+		if err != nil {
+			fmt.Println(err)
+			return
+		}
 	})
 
 	mount(r, "/auth", cfg.AuthServiceURL)
